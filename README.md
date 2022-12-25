@@ -1,7 +1,7 @@
 # lazy-trader
 
-Instant chart and useful resources on researching stocks
+![](assets/icons/icon-144x144.png)
 
-![](docs/app-icon.png)
+Instant chart and useful resources on researching stocks
 
 [https://namuan.github.io/lazy-trader/](https://namuan.github.io/lazy-trader/)
