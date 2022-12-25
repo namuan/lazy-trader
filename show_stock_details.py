@@ -47,6 +47,7 @@ def show_stock():
     stock_symbol.element.focus()
     stock_symbol.element.setSelectionRange(0, len(stock_symbol.element.value))
 
+
 if js.location.search and len(js.location.search.split("symbol=")) > 1:
     symbol = js.location.search.split("symbol=")[1].split("&")[0]
     stock_symbol.element.value = symbol
