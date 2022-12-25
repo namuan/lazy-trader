@@ -1,7 +1,7 @@
 {
   "name": "Lazy Trader",
   "short_name": "Lazy Trader",
-  "start_url": "/",
+  "start_url": "/lazy-trader",
   "display": "standalone",
   "orientation": "portrait-primary",
   "icons": [
