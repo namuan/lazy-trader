@@ -98,6 +98,12 @@
     else:
         stock_symbol.element.value = "AAPL"
         show_stock()
+
+    def show_stock_if_enter(e):
+        if e.key == "Enter":
+            show_stock()
+
+    stock_symbol.element.onkeypress = show_stock_if_enter
 </py-script>
 
 <div class="input_container">
