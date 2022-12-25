@@ -6,6 +6,9 @@ serve: ## Start the development server
 	open http://localhost:8000/
 	python3 -m http.server 8000
 
+icons: ## Generate icons
+	./mk-icns.sh
+
 .PHONY: help
 .DEFAULT_GOAL := help
 
