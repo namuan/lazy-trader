@@ -20,6 +20,16 @@
             margin-top: 50px;
         }
 
+        @media (max-width: 500px) {
+            .input_container {
+                display: flex;
+                flex-direction: column;
+            }
+            .profile_links {
+                display: none;
+            }
+        }
+
         .input_container > * {
             margin: 0 10px;
         }
@@ -35,6 +45,11 @@
             justify-content: center;
             align-items: center;
             margin-top: 50px;
+        }
+
+        #stock_chart {
+            width: 80%;
+            margin: 10px 10px 10px 10px;
         }
 
         .site_links_container {
@@ -70,14 +85,16 @@
 <div class="input_container">
     <label for="stock_symbol"></label><input id="stock_symbol" type="text"><br>
     <button id="submit_stock" type="submit" value="Submit" py-click="show_stock()">Show Details</button>
-    <ul>
-        <li>
-            <a href="https://github.com/namuan/lazy-trader" target="_blank" aria-label="Github">Github</a>
-        </li>
-        <li>
-            <a href="https://twitter.com/deskriders_twt/" target="_blank" aria-label="Twitter">Twitter</a>
-        </li>
-    </ul>
+    <div class="profile_links">
+        <ul>
+            <li>
+                <a href="https://github.com/namuan/lazy-trader" target="_blank" aria-label="Github">Github</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/deskriders_twt/" target="_blank" aria-label="Twitter">Twitter</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div class="stock_chart_container">

@@ -3,7 +3,7 @@
   "short_name": "Lazy Trader",
   "start_url": "/lazy-trader",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "icons": [
     {
       "src": "/lazy-trader/assets/icons/icon-72x72.png",
