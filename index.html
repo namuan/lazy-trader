@@ -2,44 +2,61 @@
 <head>
     <title>Lazy Trader</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
+    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css"/>
     <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
+
         .input_container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
         }
+
         .input_container > * {
             margin: 0 10px;
         }
+
         input {
             height: 30px;
             font-size: 20px;
             width: 300px;
         }
+
         .stock_chart_container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
         }
+
         .site_links_container {
             margin: 50px;
         }
-        .news_link {
+
+        a {
             color: blue;
             text-decoration: none;
             margin: 0 5px;
         }
-        .news_link:hover {
+
+        a:hover {
             background-color: blue;
             color: whitesmoke;
             text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        ul > * {
+            margin: 0 5px;
         }
     </style>
 </head>
@@ -49,6 +66,14 @@
 <div class="input_container">
     <label for="stock_symbol"></label><input id="stock_symbol" type="text"><br>
     <button id="submit_stock" type="submit" value="Submit" py-click="show_stock()">Show Details</button>
+    <ul>
+        <li>
+            <a href="https://github.com/namuan/lazy-trader" target="_blank" aria-label="Github">Github</a>
+        </li>
+        <li>
+            <a href="https://twitter.com/deskriders_twt/" target="_blank" aria-label="Twitter">Twitter</a>
+        </li>
+    </ul>
 </div>
 
 <div class="stock_chart_container">
