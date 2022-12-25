@@ -8,6 +8,7 @@ Instant chart and useful resources on researching stocks
 
 ## Thanks
 
+- [PyScript](https://pyscript.net) for building this awesome framework
 - [DallE](https://openai.com/dall-e-2/) for application icon ideas
 - [Upscale Media](https://www.upscale.media]) for upscaling generated image
 - [Photopea](https://www.photopea.com]) for image editing
