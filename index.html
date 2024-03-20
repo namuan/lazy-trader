@@ -6,8 +6,6 @@
     <title>Lazy Trader</title>
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="assets/icons/favicon.ico">
     <link rel="manifest" href="assets/manifest.json">
-    <link rel="stylesheet" href="assets/css/pyscript.css"/>
-    <script defer src="assets/js/pyscript.js"></script>
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -25,6 +23,7 @@
                 display: flex;
                 flex-direction: column;
             }
+
             .profile_links {
                 display: none;
             }
@@ -80,11 +79,10 @@
     </style>
 </head>
 <body>
-<py-script src="./show_stock_details.py"></py-script>
 
 <div class="input_container">
-    <label for="stock_symbol"></label><input id="stock_symbol" type="text"><br>
-    <button id="submit_stock" type="submit" value="Submit" py-click="show_stock()">Show Details</button>
+    <label for="stockSymbol"></label><input id="stockSymbol" type="text" value="AAPL"><br>
+    <button id="submitStock" type="submit" value="Submit">Show Details</button>
     <div class="profile_links">
         <ul>
             <li>
@@ -107,5 +105,81 @@
 <template id="site_link_template">
     <a class="news_link" target="_blank" href="https://finviz.com/quote.ashx?t=aapl">Finviz</a>
 </template>
+<script>
+    const sites = {
+        "FinViz": "https://www.finviz.com/quote.ashx?t={}",
+        "ChartMill": "https://www.chartmill.com/stock/quote/{}/fundamental-analysis",
+        "ChartMill (Income Statement)": "https://www.chartmill.com/stock/quote/{}/financials/income-statement",
+        "ChartMill (Analyst Ratings)": "https://www.chartmill.com/stock/quote/{}/analyst-ratings",
+        "GuruFocus": "https://www.gurufocus.com/stock/{}/financials",
+        "GuruFocus (Ownership)": "https://www.gurufocus.com/stock/{}/ownership",
+        "MarketChameleon": "https://marketchameleon.com/Overview/{}/",
+        "BarChart (Price)": "https://www.barchart.com/stocks/quotes/{}/overview",
+        "BarChart (Options)": "https://www.barchart.com/stocks/quotes/{}/options",
+        "BarChart (Put/Call Ratio)": "https://www.barchart.com/stocks/quotes/{}/put-call-ratios",
+        "BarChart (Income Statement)": "https://www.barchart.com/stocks/quotes/{}/income-statement/annual",
+        "BarChart (Filings)": "https://www.barchart.com/stocks/quotes/{}/sec-filings",
+        "StockInvest": "https://stockinvest.us/technical-analysis/{}",
+        "TradingView": "https://www.tradingview.com/chart/?symbol={}",
+        "SwingTradeBot": "https://swingtradebot.com/equities/{}",
+        "StockTwits (Sentiments)": "https://stocktwits.com/symbol/{}",
+        "Y Finance": "https://finance.yahoo.com/quote/{}/holders?p=ZZZ",
+        "OAI Earnings": "https://tools.optionsai.com/earnings/{}",
+        "OptionStrat (Long Call)": "https://optionstrat.com/build/long-call/{}",
+        "TipRanks": "https://www.tipranks.com/stocks/{}/forecast",
+        "TipRanks (Analysis)": "https://www.tipranks.com/stocks/{}/stock-analysis",
+        "TipRanks (Hedge Fund)": "https://www.tipranks.com/stocks/{}/hedge-funds",
+        "ETF Holdings": "https://etfdb.com/stock/{}/",
+    };
+
+    function generateLinks() {
+        const symbol = document.getElementById("stockSymbol").value.toUpperCase();
+        const linksContainer = document.getElementById("site_links");
+        linksContainer.innerHTML = ""; // Clear previous links
+
+        for (const [site, url] of Object.entries(sites)) {
+            const link = url.replace("{}", symbol);
+            const linkElement = document.createElement("a");
+            linkElement.href = link;
+            linkElement.target = "_blank";
+            linkElement.textContent = `${site} |`;
+            linksContainer.appendChild(linkElement);
+        }
+    }
+
+    function updateChart() {
+        const symbol = document.getElementById("stockSymbol").value.toUpperCase();
+        const chartImage = document.getElementById("stock_chart");
+        chartImage.src = `https://charts.finviz.com/chart.ashx?t=${symbol}&p=d&ta=sma_20,sma_50,sma_200`
+    }
+
+    function updatePage() {
+        updateChart()
+        generateLinks()
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const symbolFromUrl = params.get("symbol");
+    if (symbolFromUrl) {
+        document.getElementById("stockSymbol").value = symbolFromUrl.toUpperCase();
+        document.getElementById("submitStock").click();
+    }
+
+    const symbolInput = document.getElementById("stockSymbol");
+    symbolInput.addEventListener("keyup", function(event) {
+        if (event.code === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById("submitStock").click();
+        }
+    });
+
+    symbolInput.addEventListener("click", function (event) {
+        event.target.select();
+    });
+
+    document.getElementById("submitStock").addEventListener("click", updatePage);
+
+    window.onload = updatePage;
+</script>
 </body>
 </html>

@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Lazy Trader</title>
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="assets/icons/favicon.ico">
+    <link rel="manifest" href="assets/manifest.json">
+    <link rel="stylesheet" href="assets/css/pyscript.css"/>
+    <script defer src="assets/js/pyscript.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .input_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 500px) {
+            .input_container {
+                display: flex;
+                flex-direction: column;
+            }
+            .profile_links {
+                display: none;
+            }
+        }
+
+        .input_container > * {
+            margin: 0 10px;
+        }
+
+        input {
+            height: 30px;
+            font-size: 20px;
+            width: 300px;
+        }
+
+        .stock_chart_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        #stock_chart {
+            width: 80%;
+            margin: 10px 10px 10px 10px;
+        }
+
+        .site_links_container {
+            margin: 50px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        a:hover {
+            background-color: blue;
+            color: whitesmoke;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        ul > * {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+<py-script src="./show_stock_details.py"></py-script>
+
+<div class="input_container">
+    <label for="stock_symbol"></label><input id="stock_symbol" type="text"><br>
+    <button id="submit_stock" type="submit" value="Submit" py-click="show_stock()">Show Details</button>
+    <div class="profile_links">
+        <ul>
+            <li>
+                <a href="https://github.com/namuan/lazy-trader" target="_blank" aria-label="Github">Github</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/deskriders_twt/" target="_blank" aria-label="Twitter">Twitter</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="stock_chart_container">
+    <img id="stock_chart" src="https://charts.finviz.com/chart.ashx?t=aapl&p=d&ta=sma_20,sma_50,sma_200" alt="">
+</div>
+
+<div id="site_links" class="site_links_container">
+</div>
+
+<template id="site_link_template">
+    <a class="news_link" target="_blank" href="https://finviz.com/quote.ashx?t=aapl">Finviz</a>
+</template>
+</body>
+</html>
