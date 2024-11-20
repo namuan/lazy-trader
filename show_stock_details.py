@@ -18,6 +18,7 @@ sites = {
     "BarChart (Filings)": "https://www.barchart.com/stocks/quotes/{}/sec-filings",
     "StockInvest": "https://stockinvest.us/technical-analysis/{}",
     "TradingView": "https://www.tradingview.com/chart/?symbol={}",
+    "SeekingAlpha": "https://seekingalpha.com/symbol/{}",
     "SwingTradeBot": "https://swingtradebot.com/equities/{}",
     "StockTwits (Sentiments)": "https://stocktwits.com/symbol/{}",
     "Y Finance": "https://finance.yahoo.com/quote/{}/holders?p=ZZZ",
